@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BirthdayApp_WebApi")]
+[assembly: AssemblyTitle("jQueryApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BirthdayApp_WebApi")]
+[assembly: AssemblyProduct("jQueryApp")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a002958a-9cff-4e85-b7f7-0323bf565756")]
+[assembly: Guid("dc718f2f-8597-49fd-b421-8d34e6294e2a")]
 
 // Version information for an assembly consists of the following four values:
 //

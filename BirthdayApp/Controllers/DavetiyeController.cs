@@ -21,7 +21,7 @@ namespace BirthdayApp.Controllers
             return Veritabani.Liste.Where(i => i.KatilmaDurumu == false);
         }
 
-        public void PostEkle(DavetiyeModel model)
+        public void Ekle(DavetiyeModel model)
         {
             if (ModelState.IsValid)
             {

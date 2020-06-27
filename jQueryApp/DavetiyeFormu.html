@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+
+        <img id="ajax-loader" src="ajax-loading.gif" style="display: none; width: 100px;" />
+        <hr />
+
+        <div id="results" class="alert alert-success" style="display: none;">
+            Bilgileriniz kayıt edildi.<b>Yönlendiriliyorsunuz...</b>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h4>Sende Davetlisin!</h4></div>
+                    <div class="panel-body">
+                        <form id="DavetiyeForm">
+                            <div class="form-group">
+                                <label>Ad:</label>
+                                <input type="text" id="Ad" name="Ad" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Eposta:</label>
+                                <input type="text" id="Eposta" name="Eposta" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Katılacak mısın?</label>
+                                <select id="KatilmaDurumu" name="KatilmaDurumu" class="form-control">
+                                    <option>Etkinliğe katılıyor musun?</option>
+                                    <option value="true">Evet, geliyorum</option>
+                                    <option value="false">Hayır, gelmiyorum</option>
+                                </select>
+                            </div>
+
+                            <div class="text-center">
+                                <input class="btn btn-success" type="submit" value="Gönder" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#DavetiyeForm").submit(function (event) {
+            event.preventDefault(); //postback olmasın çünkü ajax ile bilgileri göndericez.
+
+            $.ajax({
+                url: "https://localhost:44330/api/Davetiye/Ekle",
+                data: {
+                    Ad: $("#Ad").val(), //Ad, Eposta, KatilmaDurumu bunlar formda id kısımlarını temsil ediyor.
+                    Eposta: $("#Eposta").val(),
+                    KatilmaDurumu: $("#KatilmaDurumu").val()
+                },
+                type: "Post",
+                beforeSend: function () { //göndermeden önce
+                    $("#ajax-loader").show(); //loader image göster
+                },
+                complete: function () { //tamamlandıktan sonra
+                    $("#ajax-loader").hide(); //loader image kapat
+                },
+                success: function () { //başarılı olduysa
+                    $("#results").show(); //results göster.
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
