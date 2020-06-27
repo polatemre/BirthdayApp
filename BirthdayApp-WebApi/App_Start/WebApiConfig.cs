@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace BirthdayApp
+namespace BirthdayApp_WebApi
 {
     public static class WebApiConfig
     {
@@ -16,12 +16,9 @@ namespace BirthdayApp
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            //Xml değilde Json şeklinde almak için bu kodu yaz.
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }
