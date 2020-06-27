@@ -13,7 +13,10 @@
         <hr />
 
         <div id="results" class="alert alert-success" style="display: none;">
-            Bilgileriniz kayıt edildi.<b>Yönlendiriliyorsunuz...</b>
+            <h3> Bilgileriniz kayıt edildi.</h3>
+            <h4>
+                <span id="Gelenler"></span>
+            </h4>
         </div>
 
         <div class="row">
@@ -53,6 +56,19 @@
         </div>
     </div>
     <script>
+        function GetKatilanlar() {
+            var html = [];
+
+            $.getJSON("https://localhost:44330/api/Davetiye/GetKatilanlar", function (data) {
+
+                $.each(data, function (key, value) {
+                    html.push("<label class='label label-success'>" + value.Ad + "</label> ");
+                });
+
+                $("#Gelenler").empty().append(html);
+            });
+        }
+
         $("#DavetiyeForm").submit(function (event) {
             event.preventDefault(); //postback olmasın çünkü ajax ile bilgileri göndericez.
 
@@ -71,6 +87,9 @@
                     $("#ajax-loader").hide(); //loader image kapat
                 },
                 success: function () { //başarılı olduysa
+                    if ($("#KatilmaDurumu").val() == "true") {
+                        GetKatilanlar();
+                    }
                     $("#results").show(); //results göster.
                 }
             });
