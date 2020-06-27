@@ -1,0 +1,11 @@
+﻿@using System.Web.Razor.Parser
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-center">
+    <h2>Harika bir etkinlik olacak!</h2>
+    <h3>Sende davetlisin!</h3>
+    @Html.ActionLink("Geliyor musun?", "DavetiyeFormu", null, new { @class = "btn btn-primary" })
+</div>
+
